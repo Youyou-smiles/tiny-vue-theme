@@ -21,6 +21,7 @@ test.describe('popconfirm组件xdesign规范', () => {
     page.on('pageerror', (exception) => expect(exception).toBeNull())
     await page.goto('popconfirm#type')
     const demo = page.locator('#type .pc-demo')
+    const popDemo = page.locator('#doc-layout div').filter({ hasText: '示例API图标类型通过 type' }).nth(3)
     await expect(demo).toBeInViewport()
     await expect(demo).toHaveScreenshot('type.png')
 
@@ -37,8 +38,8 @@ test.describe('popconfirm组件xdesign规范', () => {
     await success.hover()
     await hoverPop.hover()
 
-    await expect(demo).toBeInViewport()
-    await expect(demo).toHaveScreenshot('type-hover.png')
+    await expect(popDemo).toBeInViewport()
+    await expect(popDemo).toHaveScreenshot('type-hover.png')
   })
 
   test('隐藏取消--UI截图', async ({ page }) => {
